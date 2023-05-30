@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Encriptador</title>
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <header>
+            <img src="Imagenes/Logo.png"
+        </header>
+        
+        <main>
+            <section class="core">
+                <section class="medio">
+                    <textarea placeholder="Ingrese el texto aquí" class="txtmedio" id="txtmed"></textarea>
+                    <div class="botonesyaviso">
+                        <p>&#9888 Solo letras minusculas y sin acento</p>
+                        <div class="botones">
+                            <input type="button" class="butenc" value="Encriptar">
+                            <input type="button" class="butdesenc" value="Desencriptar">
+                        </div>                    
+                    </div>
+                </section>
+                
+                <section class="derecha">
+                    <p class="resultado"></p>
+                    <section class="sinresultado">
+                        <img src="Imagenes/Muñeco.png" alt="Mnieco" class="munieco">
+                        <div class="mensajederecha">
+                            <p><h1>Ningún mensaje encontrado</h1></p>
+                            <p>Ingresa el texto que desees encriptar o desencriptar</p>
+                        </div>
+                    </section>
+                </section>
+            </section>
+            <script type="text/javascript">
+                var texto = document.querySelector('.txtmedio');
+                var encbut = document.querySelector('.butenc');
+                var output = document.querySelector('.resultado');
+                var img = document.querySelector('.munieco');
+                var msjder = document.querySelectorAll('.sinresultado');
+                var desencbut = document.querySelector('.butdesenc')
+                function encriptar(){
+                    text = texto.value;
+                    if (text == ""){
+                        output.textContent = "";
+                        msjder.forEach(element => {
+                        element.style.display = 'block';
+                    });
+                    } else{
+                        msjder.forEach(element => {
+                        element.style.display = 'none';
+                    });
+                    let l = text.length;
+                    let x ="";
+                    for( let i=0; i<l ; i++){
+                        let letter = text[i];
+                        if(letter == "a"){
+                            x = x.concat("eu");
+                        }else if(letter == "e"){
+                            x= x.concat("enter");
+                        }
+                        else if(letter == "i"){
+                            x= x.concat("imes");
+                        }
+                        else if(letter == "o"){
+                            x= x.concat("ober");
+                        }
+                        else if(letter == "u"){
+                            x= x.concat("ufat");
+                        }else{
+                            x = x.concat(letter)
+                        }
+                    }
+                    output.textContent = x;
+                    }
+                }
+
+                function desencriptar(){
+                    var text = texto.value;
+                    let l = text.length;
+                    let x ="";
+                    
+                    for( let i=0; i<l ; i++){
+                        let letter = text[i];
+                        let letter2 = text[(i+1)];
+                        let letter3 = text[(i+2)];
+                        let letter4 = text[(i+3)];
+                        let letter5 = text[(i+4)];
+
+                        if( (letter=='e')&&
+                            (letter2=='n')&&
+                            (letter3=='t')&&
+                            (letter4=='e')&&
+                            (letter5=='r')){
+                            x = x.concat("e");
+                            i=i+4;
+                            }
+                        else if((letter=='e')&&
+                            (letter2=='u')
+                            ){
+                            x = x.concat("a");
+                            i++;
+                        }
+                        else if((letter=='i')&&
+                            (letter2=='m')&&
+                            (letter3=='e')&&
+                            (letter4=='s')
+                            ){
+                            x = x.concat("i");
+                            i=i+3;
+                        }
+                        else if((letter=='o')&&
+                            (letter2=='b')&&
+                            (letter3=='e')&&
+                            (letter4=='r')){
+                            x = x.concat("o");
+                            i=i+3;
+                        }
+                        else if((letter=='u')&&
+                            (letter2=='f')&&
+                            (letter3=='a')&&
+                            (letter4=='t')){
+                            x = x.concat("u");
+                            i = i+3;
+                        }else{
+                        x = x.concat(letter)
+                        } 
+                    }
+                    output.textContent = x;
+                }
+                
+                encbut.onclick = encriptar
+                desencbut.onclick = desencriptar
+
+
+            </script>
+            
+        </main>
+
+        <footer>
+            <p>Created by Alejandro Uribe Lopez || email aluribelo@unal.edu.co || GitHub: AlejandroUL</p>
+        </footer>
+    </body>
+
+</html>
